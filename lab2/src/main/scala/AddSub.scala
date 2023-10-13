@@ -14,7 +14,12 @@ class AddSub extends Module {
   val res = WireDefault(0.U(4.W))
 
   // ***** your code starts here *****
-
+  
+  when(selAdd) {
+	res := a + b
+  } .otherwise {
+	res := a - b
+  }
   // res := ????
 
   // ***** your code ends here *****

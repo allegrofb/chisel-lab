@@ -15,7 +15,11 @@ class Mux2 extends Module {
 
   // ***** your code starts here *****
 
-  res := b
+  when(sel) {
+	res := b
+  } .otherwise {
+	res := a
+  }
 
   // ***** your code ends here *****
 

@@ -11,7 +11,9 @@ class Delay extends Module {
   // ***** your code starts here *****
 
   // below is dummy code to make this example compile
-  res := io.din
+  //res := io.din
+  val delay = RegNext(RegNext(io.din))
+  res := delay
 
   // ***** your code ends here *****
 

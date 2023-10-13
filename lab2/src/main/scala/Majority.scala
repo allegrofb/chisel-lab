@@ -20,7 +20,21 @@ class Majority extends Module {
   // Rewrite this expression to express the majority to pass all tests.
 
   // ***** your code starts here *****
-  val res = a
+  //val res = a
+  val res = true.B
+  
+  when(a&b&c) {
+	res := true.B
+  } .elsewhen(a&(b^c)) {
+	res := true.B
+  } .elsewhen(b&(a^c)) {
+	res := true.B
+  } .elsewhen(c&(b^a)) {
+	res := true.B
+  } .otherwise {
+	res := false.B
+  }
+  
   // ***** your code ends here *****
 
   // Hint: this initial exercise shall familiarize you with the testing environment.
