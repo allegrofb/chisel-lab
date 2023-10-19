@@ -1,4 +1,5 @@
 import chisel3._
+import chisel3.util._
 
 /**
   * Use Mux2 components to build a 4:1 multiplexer
@@ -32,7 +33,7 @@ class Mux4 extends Module {
   mux2_3.io.b := mux2_2.io.y
   mux2_3.io.sel := 0.U
   
-  when(io.sel === 0.U) {
+  /*when(io.sel === 0.U) {
 	mux2_1.io.sel := 0.U
 	mux2_3.io.sel := 0.U
   } .elsewhen(io.sel === 1.U) {
@@ -44,9 +45,9 @@ class Mux4 extends Module {
   } .elsewhen(io.sel === 3.U) {
 	mux2_2.io.sel := 1.U
 	mux2_3.io.sel := 1.U
-  }
+  }*/
   
-  /*switch(io.sel) {
+  switch(io.sel) {
 	is (0.U) { 
 		mux2_1.io.sel := 0.U
 		mux2_3.io.sel := 0.U
@@ -63,7 +64,7 @@ class Mux4 extends Module {
 		mux2_2.io.sel := 1.U
 		mux2_3.io.sel := 1.U
 	}
-  }*/
+  }
   
   io.y := mux2_3.io.y  
   

@@ -10,8 +10,10 @@ class Accu extends Module {
   val res = Wire(UInt())
 
   // ***** your code starts here *****
-
-  res := 0.U // dummy code to make it compile
+  val accu = RegInit(0.U(8.W))
+  accu := Mux(io.setZero, 0.U, accu + io.din)
+  //res := 0.U // dummy code to make it compile
+  res := accu
 
   // ***** your code ends here *****
 
