@@ -138,12 +138,13 @@ object VendingSimulation extends App {
     dut.clock.setTimeout(0)
     while (d.running) {
 
-      dut.clock.step(4)
+	  //dut.clock.step(4)
       var an = dut.io.an.peek.litValue.toInt
       val seg = dut.io.seg.peek.litValue.toInt
       for (i <- 0 until 4) {
         if ((an & 1) == 0) {
           d.digits(3 - i) = ~seg
+          dut.clock.step(1)
         }
         an >>= 1
       }
@@ -155,6 +156,7 @@ object VendingSimulation extends App {
         price <<= 1
         price += (if (d.switches(4-i).selected) 1 else 0)
       }
+	  //println(s"price = $price")
       dut.io.price.poke(price.U)
       dut.io.coin2.poke(d.btnVal(0).B)
       dut.io.coin5.poke(d.btnVal(1).B)

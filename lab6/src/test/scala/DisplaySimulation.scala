@@ -101,12 +101,13 @@ object DisplaySimulation extends App {
     dut.clock.setTimeout(0)
     while (display.running) {
       dut.io.sw.poke(display.inVal.U)
-      dut.clock.step(4)
+      //dut.clock.step(4)
       var an = dut.io.an.peek.litValue.toInt
       val seg = dut.io.seg.peek.litValue.toInt
       for (i <- 0 until 4) {
         if ((an & 1) == 0) {
           display.digits(3 - i) = ~seg
+		  dut.clock.step(1)
         }
         an >>= 1
       }
